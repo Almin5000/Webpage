@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+        integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="css/utilities.css">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: whitesmoke;
+        }
+    
+        .image-container {
+    width: 600px; /* Set the width to maintain a 16:9 aspect ratio */
+    height: 338px; /* Set the height to maintain a 16:9 aspect ratio */
+    max-width: 100%; /* Ensure the container does not exceed its parent's width */
+    max-height: 100%; /* Ensure the container does not exceed its parent's height */
+    overflow: hidden; /* Hide overflowing content */
+    float: right;
+    margin: 15px;
+    border-radius: 15px;
+}
+
+#myImage {
+    width: 100%; /* Set the width to fill the container */
+    height: 100%; /* Set the height to fill the container */
+    object-fit: cover; /* Maintain aspect ratio and cover the container */
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    transition: opacity 0.5s ease;
+}
+
+        .text p{
+             text-align: left;
+             font-size: 18px;
+             padding-left: 15px;
+             padding-bottom: 60px;
+        }
+
+        .stuff{
+            background-color: whitesmoke;
+            width: 100%;
+            height: 600px;
+        }
+
+        .footer{
+            height: 300px;
+        }
+
+        #map {
+            height: 100%;
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">    
+        <div class="container flex">
+            <h1 class="logo">Test side</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="other.html">Other</a></li>
+                    <li><a href="features.html">Features</a></li>
+                    <li><a href="Docs.html">Docs</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <br>
+    
+
+
+    <div class="image-container">
+        <img id="myImage" src="images/img/pro.jpg">
+    </div>
+    
+    <script> 
+        var i = 0; //start point
+        var images = [];
+        var time = 5000; // Time to wait before transitioning to the next image
+        var fadeTime = 300; // Time for fade animation
+        
+        // Image list using array literal
+        var images = [
+            "images/img/pro.jpg",
+            "images/img/pro3.jpg",
+            "images/img/pro2.jpg"
+        ];
+
+        //change image
+        function changeImg(){
+            document.getElementById("myImage").style.opacity = 0; // Fade out the image
+            
+            // Load the next image after the fade out animation completes
+            setTimeout(function() {
+                document.getElementById("myImage").src = images[i];
+                document.getElementById("myImage").style.opacity = 1; // Fade in the new image
+            }, fadeTime); 
+            
+            // Increment the image index
+            if(i < images.length - 1){
+                i++;    
+            } else {
+                i = 0;
+            }
+        
+            // Repeat the function after the specified time
+            setTimeout(changeImg, time);
+        }
+        
+        // Start the image transition after a brief delay
+        setTimeout(changeImg, time);
+    </script>
+    
+
+    <div class="text">
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam, quasi,
+            quaerat, quidem, repellendus quibusdam quod, quasi, quaerat, quidem, repellendus
+            quibusdam quod, quasi, quaerat, quidem, repellendus quibusdam quod, quasi, quaerat,
+            quidem, repellendus quibusdam quod, quasi, quaerat, quidem, repellendus quibusdam
+            quod, quasi, quaerat, quidem, repellendus quibusdam quod, quasi, quaerat, quidem,
+            repellendus quibusdam quod, quasi, quaerat, quidem, repellendus quibusdam quod.
+        </p>
+        <br>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam, quasi,
+            quaerat, quidem, repellendus quibusdam quod, quasi, quaerat, quidem, repellendus
+            quibusdam quod, quasi, quaerat, quidem, repellendus quibusdam quod, quasi, quaerat,
+            quidem, repellendus quibusdam quod, quasi, quaerat, quidem, repellendus quibusdam
+            quod, quasi, quaerat, quidem, repellendus quibusdam quod, quasi, quaerat, quidem,
+            repellendus quibusdam quod, quasi, quaerat, quidem, repellendus quibusdam quod.
+            quidem, repellendus quibusdam quod, quasi, quaerat, quidem, repellendus quibusdam
+            quod, quasi, quaerat, quidem, repellendus quibusdam quod, quasi, quaerat, quidem,
+            repellendus quibusdam quod, quasi, quaerat, quidem, repellendus quibusdam quod.
+            
+        </p>
+
+    </div>
+    
+    <div class="stuff">
+
+        <div id="map"></div>
+        <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCE8HEtBi-uiAzTGVunI2RpheuXE61DyDM&callback=initMap"
+        defer        
+        ></script>
+    </div>
+    <br>
+    
+    <footer class="footer bg-dark py-5">
+        <div class="container grid grid-3">
+            <div>
+                <h1>Teste</h1>
+                <p>Copyright &copy; 2021</p>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="other.html">Other</a></li>
+                    <li><a href="features.html">Features</a></li>
+                    <li><a href="docs.html">Docs</a></li>
+                </ul>
+            </nav>
+            <div class="social">
+                <a href="#"><i class="fab fa-github fa-2x"></i></a>
+                <a href="#"><i class="fab fa-facebook fa-2x"></i></a>
+                <a href="#"><i class="fab fa-instagram fa-2x"></i></a>
+                <a href="#"><i class="fab fa-twitter fa-2x"></i></a>
+            </div>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
